@@ -191,18 +191,19 @@ class AI(BaseAI):
               if allUnits.owner != self.player and not boys.acted:
                 boys.attack(allUnits)
 
-        if len(self.game.units) % 10  <= 3:
-            self.player.home_base.spawn(self.initialPosX, self.initialPosY, "miner")
-            self.minerCount += 1
-        elif len(self.game.units) % 10  <= 6:
-          if self.player.money > self.game.jobs[0].unit_cost:
-            self.player.home_base.spawn(self.initialPosX, self.initialPosY, "corvette")
-            self.corvetteCount += 1
-        else:
-          if self.player.money > self.game.jobs[4].unit_cost:
-            self.player.home_base.spawn(self.initialPosX, self.initialPosY, "miner")
-            self.minerCount += 1
-
+        while(self.player.money >= 200):
+          if len(self.game.units) % 10  <= 3:
+            if self.player.money > self.game.jobs[4].unit_cost:
+              self.player.home_base.spawn(self.initialPosX, self.initialPosY, "miner")
+              self.minerCount += 1
+          elif len(self.game.units) % 10  <= 6:
+            if self.player.money > self.game.jobs[0].unit_cost:
+              self.player.home_base.spawn(self.initialPosX, self.initialPosY, "corvette")
+              self.corvetteCount += 1
+          else:
+            if self.player.money > self.game.jobs[4].unit_cost:
+              self.player.home_base.spawn(self.initialPosX, self.initialPosY, "miner")
+              self.minerCount += 1
 
         self.hasDashed = True
 
