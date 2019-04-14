@@ -188,7 +188,7 @@ class AI(BaseAI):
               boys.move(boys.x+xMove, boys.y+yMove)
 
             for allUnits in self.game.units:
-              allUnitsDistance = ((allUnits.x-boysPosX)**2+(allUnits.Y-boysPosY)**2)**(1/2)
+              allUnitsDistance = ((allUnits.x-boysPosX)**2+(allUnits.y-boysPosY)**2)**(1/2)
 
               if allUnits.owner != self.player and not boys.acted and allUnitsDistance <= 100:
                 boys.attack(allUnits)
