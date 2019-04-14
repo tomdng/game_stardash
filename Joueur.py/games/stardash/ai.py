@@ -161,28 +161,28 @@ class AI(BaseAI):
             if corvetteIndex % 2 == 0:
               if 1600-boys.x > 0: #on left
                 if boys.y < 625:
-                  yMove=64
+                  yMove=32
                 if boys.x < 1600:
-                  xMove=64
+                  xMove=32
               else: #on right
                 if boys.y < 625:
-                  yMove=64
+                  yMove=32
                 if boys.x > 1600:
-                  xMove=-64
+                  xMove=-32
               boys.move(boys.x+xMove, boys.y+yMove)
 
 
             else:
               if 1600-boys.x > 0: #on left
                 if boys.y > 225:
-                  yMove=-64
+                  yMove=-32
                 if boys.x < 1600:
-                  xMove=64
+                  xMove=32
               else: #on right
                 if boys.y > 225:
-                  yMove=-64
+                  yMove=-32
                 if boys.x > 1600:
-                  xMove=-64
+                  xMove=-32
               boys.move(boys.x+xMove, boys.y+yMove)
 
 
