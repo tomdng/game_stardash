@@ -156,6 +156,7 @@ class AI(BaseAI):
                   boys.mine(minGirl)
 
           if boys.job.title=="corvette":
+            corvetteIndex += 1
             yMove=0
             xMove=0
             #boys.move(boys.x, boys.y-64)
