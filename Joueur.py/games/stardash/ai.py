@@ -115,9 +115,12 @@ class AI(BaseAI):
 
               if not self.hasDashed:
                 boys.dash(minX, minY)
+              elif boys.job.range > minDistance:
+                boys.mine(minGirl)
               else:
                 boys.move(minX, minY)
                 boys.mine(minGirl)
+
 
         self.hasDashed = True
 
