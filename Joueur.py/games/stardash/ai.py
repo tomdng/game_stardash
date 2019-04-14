@@ -52,6 +52,8 @@ class AI(BaseAI):
 
         #CHECKING INITIAL VARIABLES
 
+        turnCounter=0
+
         # <<-- /Creer-Merge: start -->>
 
     def game_updated(self):
@@ -87,21 +89,22 @@ class AI(BaseAI):
             boysPosX = boys.x
             boysPosY = boys.y
 
-            minX=10000
-            minY=10000
-            minDistance=10000
 #boys.move(boys.x+10, boys.y+10)
+            if turnCounter % 10 == 0:
+              minX=10000
+              minY=10000
+              minDistance=10000
+              for girls in self.game.bodies:
+                if girls.body_type == "asteroid":
+                  girlsPosX = girls.x
+                  girlsPosY = girls.y
+                  if ((girlsPosX-boysPosX)**2+(girlsPosY-boysPosY)**2)**(1/2) < minDistance:
+                    minX=girlsPosX
+                    minY=girlsPosY
 
-            for girls in self.game.bodies:
-              if girls.body_type == "asteroid":
-                girlsPosX = girls.x
-                girlsPosY = girls.y
-                if ((girlsPosX-boysPosX)**2+(girlsPosY-boysPosY)**2)**(1/2) < minDistance:
-                  minX=girlsPosX
-                  minY=girlsPosY
+            boys.dash(minX, minY)
 
-            boys.move(minX, minY)
-
+        turnCounter+=1
         return True
         # <<-- /Creer-Merge: runTurn -->>
 
