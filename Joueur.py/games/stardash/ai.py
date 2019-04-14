@@ -95,7 +95,7 @@ class AI(BaseAI):
 #boys.move(boys.x+10, boys.y+10)
             if boys.job.carry_limit-2 <= (boys.genarium+boys.legendarium+boys.mythicite+boys.rarium):
               boys.dash(self.initialPosX, self.initialPosY)
-              self.hasDashed=False
+#              self.hasDashed=False
 
             else:
               minX=10000
@@ -115,8 +115,8 @@ class AI(BaseAI):
 
               if not self.hasDashed:
                 boys.dash(minX, minY)
-              elif boys.job.range > minDistance:
-                boys.mine(minGirl)
+ #             elif boys.job.range > minDistance:
+  #              boys.mine(minGirl)
               else:
                 boys.move(minX, minY)
                 boys.mine(minGirl)
