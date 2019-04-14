@@ -163,10 +163,10 @@ class AI(BaseAI):
               if allUnits.owner != self.player and not bodys.acted:
                 boys.attack(allUnits)
 
-        if self.money > self.game.jobs[0].unit_cost and corvetteCount <= 2:
+        if self.player.money > self.game.jobs[0].unit_cost and corvetteCount <= 2:
           self.body.spawn(self.initialPosX, self.initialPosY, "corvette")
           self.corvetteCount += 1
-        elif self.money > self.game.jobs[4].unit_cost and corvetteCount >= 2:
+        elif self.player.money > self.game.jobs[4].unit_cost and corvetteCount >= 2:
           self.body.spawn(self.initialPosX, self.initialPosY, "miner")
           self.minerCount += 1
 
