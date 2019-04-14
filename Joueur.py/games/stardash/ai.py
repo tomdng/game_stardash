@@ -51,6 +51,9 @@ class AI(BaseAI):
         # replace with your start logic
 
         #CHECKING INITIAL VARIABLES
+
+        self.hasDashed = false
+
         # <<-- /Creer-Merge: start -->>
 
     def game_updated(self):
@@ -91,7 +94,7 @@ class AI(BaseAI):
             minY=10000
             minDistance=10000
             for girls in self.game.bodies:
-              if girls.body_type == "asteroid":
+              if girls.body_type == "asteroid" and girls.owner == None:
                 girlsPosX = girls.x
                 girlsPosY = girls.y
                 girlsDistance = ((girlsPosX-boysPosX)**2+(girlsPosY-boysPosY)**2)**(1/2)
@@ -100,7 +103,12 @@ class AI(BaseAI):
                   minY=girlsPosY
                   minDistance = girlsDistance
 
-            boys.dash(minX, minY)
+            if !self.hasDashed:
+              boys.dash(minX, minY)
+            else:
+              boys.move(minX, minY)
+
+        self.hasDashed = true
 
         return True
         # <<-- /Creer-Merge: runTurn -->>
