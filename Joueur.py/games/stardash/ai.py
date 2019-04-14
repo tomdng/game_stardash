@@ -117,23 +117,8 @@ class AI(BaseAI):
                 minY=10000
                 minDistance=10000
                 minGirl = None
-
-                minFineX=10000
-                minFineY=10000
-                minFineDistance=10000
-                minFineGirl = None
                 for girls in self.game.bodies:
-                  if girls.body_type == "asteroid" and girls.owner == None and girls.material_type == "legendarium":
-                    girlsFinePosX = girls.x
-                    girlsFinePosY = girls.y
-                    girlsFineDistance = ((girlsFinePosX-boysPosX)**2+(girlsFinePosY-boysPosY)**2)**(1/2)
-                    if girlsFineDistance < minFineDistance:
-                      minFineX=girlsFinPosX
-                      minFineY=girlsFinePosY
-                      minFineDistance = girlsFineDistance
-                      minFineGirl = girls
-
-                  elif girls.body_type == "asteroid" and girls.owner == None:
+                  if girls.body_type == "asteroid" and girls.owner == None:
                     girlsPosX = girls.x
                     girlsPosY = girls.y
                     girlsDistance = ((girlsPosX-boysPosX)**2+(girlsPosY-boysPosY)**2)**(1/2)
@@ -144,11 +129,10 @@ class AI(BaseAI):
                       minGirl = girls
 
                 if boys.x == self.initialPosX and boys.y == self.initialPosY:
-                    boys.dash(minX, minY)
+                  boys.dash(minX, minY)
                 else:
-                  if minFineDisatnce < minDistance*2:
-                    boys.move(minX, minY)
-                    boys.mine(minGirl)
+                  boys.move(minX, minY)
+                  boys.mine(minGirl)
               else:
                 minX=10000
                 minY=10000
@@ -208,7 +192,6 @@ class AI(BaseAI):
                 boys.attack(allUnits)
 
         if len(self.game.units) % 10  <= 3:
-          if self.player.money > self.game.jobs[4].unit_cost:
             self.player.home_base.spawn(self.initialPosX, self.initialPosY, "miner")
             self.minerCount += 1
         elif len(self.game.units) % 10  <= 6:
