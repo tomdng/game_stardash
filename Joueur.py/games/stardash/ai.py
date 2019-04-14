@@ -198,7 +198,7 @@ class AI(BaseAI):
           if self.player.money > self.game.jobs[0].unit_cost:
             self.player.home_base.spawn(self.initialPosX, self.initialPosY, "corvette")
             self.corvetteCount += 1
-        else
+        else:
           if self.player.money > self.game.jobs[4].unit_cost:
             self.player.home_base.spawn(self.initialPosX, self.initialPosY, "miner")
             self.minerCount += 1
