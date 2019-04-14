@@ -93,7 +93,7 @@ class AI(BaseAI):
 #boys.move(boys.x+10, boys.y+10)
 
             for girls in self.game.bodies:
-              if girls.body_type == asteroid:
+              if girls.body_type == "asteroid":
                 girlsPosX = girls.x
                 girlsPosY = girls.y
                 if ((girlsPosX-boysPosX)**2+(girlsPosY-boysPosY)**2)**(1/2) < minDistance:
