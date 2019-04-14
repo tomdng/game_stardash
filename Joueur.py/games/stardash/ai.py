@@ -82,9 +82,26 @@ class AI(BaseAI):
         """
         # <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         # Put your game logic here for runTurn
-        for boys in self._player.units:
+        for boys in self.player.units:
           if boys.job.title=="miner":
-            boys.move(boys.x+10, boys.y+10)
+            boysPosX = boys.x
+            boysPosY = boys.y
+
+            minX=10000
+            minY=10000
+            minDistance=10000
+#boys.move(boys.x+10, boys.y+10)
+
+            for girls in self.game.bodies:
+              if girls.body_type == asteroid:
+                girlsPosX = girls.x
+                girlsPosY = girls.y
+                if ((girlsPosX-boysPosX)**2+(girlsPosY-boysPosY)**2)**(1/2) < minDistance:
+                  minX=girlsPosX
+                  minY=girlsPosY
+
+            boys.move(minX, minY)
+
         return True
         # <<-- /Creer-Merge: runTurn -->>
 
