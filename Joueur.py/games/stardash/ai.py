@@ -94,7 +94,7 @@ class AI(BaseAI):
 
 #boys.move(boys.x+10, boys.y+10)
             if boys.job.carry_limit >= (boys.genarium+boys.legendarium+boys.mythicite+boys.rarium):
-              boys.dash(initialPosX, initialPosY)
+              boys.dash(self.initialPosX, self.initialPosY)
               self.hasDashed=False
 
             else:
