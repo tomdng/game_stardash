@@ -51,9 +51,6 @@ class AI(BaseAI):
         # replace with your start logic
 
         #CHECKING INITIAL VARIABLES
-        global turncounter
-        turnCounter=0
-
         # <<-- /Creer-Merge: start -->>
 
     def game_updated(self):
@@ -84,28 +81,27 @@ class AI(BaseAI):
         """
         # <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         # Put your game logic here for runTurn
-        global turncounter
         for boys in self.player.units:
           if boys.job.title=="miner":
             boysPosX = boys.x
             boysPosY = boys.y
 
 #boys.move(boys.x+10, boys.y+10)
-            if turnCounter % 10 == 0:
-              minX=10000
-              minY=10000
-              minDistance=10000
-              for girls in self.game.bodies:
-                if girls.body_type == "asteroid":
-                  girlsPosX = girls.x
-                  girlsPosY = girls.y
-                  if ((girlsPosX-boysPosX)**2+(girlsPosY-boysPosY)**2)**(1/2) < minDistance:
-                    minX=girlsPosX
-                    minY=girlsPosY
+            minX=10000
+            minY=10000
+            minDistance=10000
+            for girls in self.game.bodies:
+              if girls.body_type == "asteroid":
+                girlsPosX = girls.x
+                girlsPosY = girls.y
+                girlsDistance = ((girlsPosX-boysPosX)**2+(girlsPosY-boysPosY)**2)**(1/2)
+                if girlsDistance < minDistance:
+                  minX=girlsPosX
+                  minY=girlsPosY
+                  minDistance = girlsDistance
 
             boys.dash(minX, minY)
 
-        turnCounter+=1
         return True
         # <<-- /Creer-Merge: runTurn -->>
 
