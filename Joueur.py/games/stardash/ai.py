@@ -82,9 +82,9 @@ class AI(BaseAI):
         """
         # <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         # Put your game logic here for runTurn
-        ourUnits = units()
-        for i in ourUnits:
-          ourUnits[i].move(ourUnits[i].x+10, ourUnits[i].y+10)
+        for boys in self._player.units():
+          if boys.title=="miner":
+            boys.move(boys.x+10, boys.y+10)
         return True
         # <<-- /Creer-Merge: runTurn -->>
 
