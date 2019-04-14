@@ -4,6 +4,7 @@ from joueur.base_ai import BaseAI
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
 # you can add additional import(s) here
+from games.stardash.player import Player
 # <<-- /Creer-Merge: imports -->>
 
 class AI(BaseAI):
@@ -33,7 +34,7 @@ class AI(BaseAI):
             str: The name of your Player.
         """
         # <<-- Creer-Merge: get-name -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        return "Stardash Python Player" # REPLACE THIS WITH YOUR TEAM NAME
+        return "TandT" # REPLACE THIS WITH YOUR TEAM NAME
         # <<-- /Creer-Merge: get-name -->>
 
     def start(self):
@@ -42,6 +43,11 @@ class AI(BaseAI):
         """
         # <<-- Creer-Merge: start -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         # replace with your start logic
+
+        #CHECKING INITIAL VARIABLES
+
+
+
         # <<-- /Creer-Merge: start -->>
 
     def game_updated(self):
