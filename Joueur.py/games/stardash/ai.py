@@ -113,7 +113,7 @@ class AI(BaseAI):
                     minGirl = girls
 
              # if not self.hasDashed:
-              if 1 >= (boys.genarium+boys.legendarium+boys.mythicite+boys.rarium):
+              if boys.x == self.initialPosX and boys.y == self.initialPosY:
                 boys.dash(minX, minY)
               else:
                 boys.move(minX, minY)
