@@ -118,7 +118,7 @@ class AI(BaseAI):
                 minDistance=10000
                 minGirl = None
                 for girls in self.game.bodies:
-                  if girls.body_type == "asteroid" and girls.owner == None:
+                  if girls.body_type == "asteroid":
                     girlsPosX = girls.x
                     girlsPosY = girls.y
                     girlsDistance = ((girlsPosX-boysPosX)**2+(girlsPosY-boysPosY)**2)**(1/2)
