@@ -160,7 +160,7 @@ class AI(BaseAI):
               boys.dash(1600, 225)
 
             for allUnits in self.game.units:
-              if allUnits.owner != self.player and not bodys.acted:
+              if allUnits.owner != self.player and not boys.acted:
                 boys.attack(allUnits)
 
         if self.player.money > self.game.jobs[0].unit_cost and self.corvetteCount <= 2:
