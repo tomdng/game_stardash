@@ -52,7 +52,7 @@ class AI(BaseAI):
 
         #CHECKING INITIAL VARIABLES
 
-        self.hasDashed = false
+        self.hasDashed = False
 
         # <<-- /Creer-Merge: start -->>
 
@@ -103,12 +103,12 @@ class AI(BaseAI):
                   minY=girlsPosY
                   minDistance = girlsDistance
 
-            if !self.hasDashed:
+            if not self.hasDashed:
               boys.dash(minX, minY)
             else:
               boys.move(minX, minY)
 
-        self.hasDashed = true
+        self.hasDashed = True
 
         return True
         # <<-- /Creer-Merge: runTurn -->>
