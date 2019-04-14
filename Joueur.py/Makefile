@@ -3,10 +3,10 @@ all:
 	make core
 
 dependencies:
-	pip3 install -U -r requirements.txt
+	pip3.7 install -U -r requirements.txt
 
 core:
-	python3 -m compileall -x '_creer' ./
+	python3.7 -m compileall -x '_creer' ./
 
 clean:
 	find . -type f -name '*.pyc' -delete
