@@ -156,12 +156,34 @@ class AI(BaseAI):
                   boys.mine(minGirl)
 
           if boys.job.title=="corvette":
-            if corvetteIndex % 2 == 0 and not self.corvetteOneHasDashed:
-              boys.dash(1600, 675)
-              self.corvetteOneHasDashed = True
-            elif not self.corvetteTwoHasDashed:
-              boys.dash(1600, 225)
-              self.corvetteTwoHasDashed = True
+            if corvetteIndex % 2 == 0:
+              if 1600-boys.x > 0: #on left
+                if boys.y < 625:
+                  yMove=64
+                if boys.x < 1600:
+                  xMove=64
+              else: #on right
+                if boys.y < 625:
+                  yMove=64
+                if boys.x > 1600:
+                  xMove=-64
+              boys.move(boys.x+xMove, boys.y+yMove)
+
+
+            else:
+              if 1600-boys.x > 0: #on left
+                if boys.y > 225:
+                  yMove=-64
+                if boys.x < 1600:
+                  xMove=64
+              else: #on right
+                if boys.y > 225:
+                  yMove=-64
+                if boys.x > 1600:
+                  xMove=-64
+              boys.move(boys.x+xMove, boys.y+yMove)
+
+
 
             for allUnits in self.game.units:
               if allUnits.owner != self.player and not boys.acted:
