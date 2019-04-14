@@ -52,7 +52,7 @@ class AI(BaseAI):
 
         #CHECKING INITIAL VARIABLES
 
-        self.hasDashed = false
+        self.hasDashed = False
 
 
         self.initialPosX = self.player.units[0].x
@@ -119,7 +119,8 @@ class AI(BaseAI):
                 boys.move(minX, minY)
                 boys.mine(minGirl)
 
-        self.hasDashed = true
+        self.hasDashed = True
+
         return True
         # <<-- /Creer-Merge: runTurn -->>
 
