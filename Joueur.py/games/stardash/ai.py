@@ -1,4 +1,4 @@
-fdi# This is where you build your AI for the Stardash game.
+# This is where you build your AI for the Stardash game.
 
 from joueur.base_ai import BaseAI
 
