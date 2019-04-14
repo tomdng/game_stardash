@@ -1,4 +1,4 @@
-fdi# This is where you build your AI for the Stardash game.
+# This is where you build your AI for the Stardash game.
 
 from joueur.base_ai import BaseAI
 
@@ -146,7 +146,7 @@ class AI(BaseAI):
                 if boys.x == self.initialPosX and boys.y == self.initialPosY:
                     boys.dash(minX, minY)
                 else:
-                  if minFineDistance < minDistance*2:
+                  if minFineDisatnce < minDistance*2:
                     boys.move(minX, minY)
                     boys.mine(minGirl)
               else:
