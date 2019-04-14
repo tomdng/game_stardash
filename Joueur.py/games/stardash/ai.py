@@ -112,7 +112,7 @@ class AI(BaseAI):
               boys.dash(self.initialPosX, self.initialPosY)
 
             else:
-              if minerIndex <= 3:
+              if minerIndex % 7 < 3:
                 minX=10000
                 minY=10000
                 minDistance=10000
@@ -191,12 +191,17 @@ class AI(BaseAI):
               if allUnits.owner != self.player and not boys.acted:
                 boys.attack(allUnits)
 
-        if self.player.money > self.game.jobs[0].unit_cost and self.corvetteCount <= 2:
-          self.player.home_base.spawn(self.initialPosX, self.initialPosY, "corvette")
-          self.corvetteCount += 1
-        elif self.player.money > self.game.jobs[4].unit_cost and self.corvetteCount >= 2:
-          self.player.home_base.spawn(self.initialPosX, self.initialPosY, "miner")
-          self.minerCount += 1
+        if len(self.game.units) % 10  <= 3:
+            self.player.home_base.spawn(self.initialPosX, self.initialPosY, "miner")
+            self.minerCount += 1
+        elif len(self.game.units) % 10  <= 6:
+          if self.player.money > self.game.jobs[0].unit_cost:
+            self.player.home_base.spawn(self.initialPosX, self.initialPosY, "corvette")
+            self.corvetteCount += 1
+        else
+          if self.player.money > self.game.jobs[4].unit_cost:
+            self.player.home_base.spawn(self.initialPosX, self.initialPosY, "miner")
+            self.minerCount += 1
 
 
         self.hasDashed = True
