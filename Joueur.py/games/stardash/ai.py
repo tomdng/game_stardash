@@ -54,6 +54,9 @@ class AI(BaseAI):
 
         self.hasDashed = false
 
+
+        self.initialPosX = self.player.units[0].x
+        self.initialPosY = self.player.units[0].y
         # <<-- /Creer-Merge: start -->>
 
     def game_updated(self):
@@ -90,26 +93,33 @@ class AI(BaseAI):
             boysPosY = boys.y
 
 #boys.move(boys.x+10, boys.y+10)
-            minX=10000
-            minY=10000
-            minDistance=10000
-            for girls in self.game.bodies:
-              if girls.body_type == "asteroid" and girls.owner == None:
-                girlsPosX = girls.x
-                girlsPosY = girls.y
-                girlsDistance = ((girlsPosX-boysPosX)**2+(girlsPosY-boysPosY)**2)**(1/2)
-                if girlsDistance < minDistance:
-                  minX=girlsPosX
-                  minY=girlsPosY
-                  minDistance = girlsDistance
+            if boys.job.carry_limit >= (boys.genarium+boys.legendarium+boys.mythicite+boys.rarium):
+              boys.dash(initialPosX, initialPosY)
+              self.hasDashed=False
 
-            if !self.hasDashed:
-              boys.dash(minX, minY)
             else:
-              boys.move(minX, minY)
+              minX=10000
+              minY=10000
+              minDistance=10000
+              minGirl = None
+              for girls in self.game.bodies:
+                if girls.body_type == "asteroid" and girls.owner == None:
+                  girlsPosX = girls.x
+                  girlsPosY = girls.y
+                  girlsDistance = ((girlsPosX-boysPosX)**2+(girlsPosY-boysPosY)**2)**(1/2)
+                  if girlsDistance < minDistance:
+                    minX=girlsPosX
+                    minY=girlsPosY
+                    minDistance = girlsDistance
+                    minGirl = girls
+
+              if !self.hasDashed:
+                boys.dash(minX, minY)
+              else:
+                boys.move(minX, minY)
+                boys.mine(minGirl)
 
         self.hasDashed = true
-
         return True
         # <<-- /Creer-Merge: runTurn -->>
 
