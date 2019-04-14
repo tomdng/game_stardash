@@ -100,7 +100,7 @@ class AI(BaseAI):
         corvetteIndex = 0
 
 
-        for boys in range(len(self.player.units)):
+        for boys in self.player.units:
           if boys.job.title=="miner":
             minerIndex += 1
             boysPosX = boys.x
