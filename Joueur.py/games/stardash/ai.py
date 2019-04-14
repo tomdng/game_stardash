@@ -51,6 +51,13 @@ class AI(BaseAI):
         # replace with your start logic
 
         #CHECKING INITIAL VARIABLES
+        self.turnCount = 0
+        self.corvetteCount = 0
+        self.missleBoatCount = 0
+        self.martyrCount = 0
+        self.transportCount = 0
+        self.minerCount = 3
+
 
         self.hasDashed = False
 
@@ -87,37 +94,81 @@ class AI(BaseAI):
         """
         # <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         # Put your game logic here for runTurn
-        for boys in self.player.units:
+
+        self.turnCount += 1
+        minerIndex = 0
+        corvetteIndex = 0
+
+
+        for boys in range(len(self.player.units)):
           if boys.job.title=="miner":
+            minerIndex += 1
             boysPosX = boys.x
             boysPosY = boys.y
 
-#boys.move(boys.x+10, boys.y+10)
             if boys.job.carry_limit-2 <= (boys.genarium+boys.legendarium+boys.mythicite+boys.rarium):
               boys.dash(self.initialPosX, self.initialPosY)
 
             else:
-              minX=10000
-              minY=10000
-              minDistance=10000
-              minGirl = None
-              for girls in self.game.bodies:
-                if girls.body_type == "asteroid" and girls.owner == None:
-                  girlsPosX = girls.x
-                  girlsPosY = girls.y
-                  girlsDistance = ((girlsPosX-boysPosX)**2+(girlsPosY-boysPosY)**2)**(1/2)
-                  if girlsDistance < minDistance:
-                    minX=girlsPosX
-                    minY=girlsPosY
-                    minDistance = girlsDistance
-                    minGirl = girls
+              if minerIndex < 3:
+                minX=10000
+                minY=10000
+                minDistance=10000
+                minGirl = None
+                for girls in self.game.bodies:
+                  if girls.body_type == "asteroid" and girls.owner == None:
+                    girlsPosX = girls.x
+                    girlsPosY = girls.y
+                    girlsDistance = ((girlsPosX-boysPosX)**2+(girlsPosY-boysPosY)**2)**(1/2)
+                    if girlsDistance < minDistance:
+                      minX=girlsPosX
+                      minY=girlsPosY
+                      minDistance = girlsDistance
+                      minGirl = girls
 
-             # if not self.hasDashed:
-              if boys.x == self.initialPosX and boys.y == self.initialPosY:
-                boys.dash(minX, minY)
+                if boys.x == self.initialPosX and boys.y == self.initialPosY:
+                  boys.dash(minX, minY)
+                else:
+                  boys.move(minX, minY)
+                  boys.mine(minGirl)
               else:
-                boys.move(minX, minY)
-                boys.mine(minGirl)
+                minX=10000
+                minY=10000
+                minDistance=10000
+                minGirl = None
+                for girls in self.game.bodies:
+                  if girls.body_type == "asteroid" and girls.owner == None and girls.material_type == mythicite:
+                    girlsPosX = girls.x
+                    girlsPosY = girls.y
+                    girlsDistance = ((girlsPosX-boysPosX)**2+(girlsPosY-boysPosY)**2)**(1/2)
+                    if girlsDistance < minDistance:
+                      minX=girlsPosX
+                      minY=girlsPosY
+                      minDistance = girlsDistance
+                      minGirl = girls
+
+                if boys.x == self.initialPosX and boys.y == self.initialPosY:
+                  boys.dash(minX, minY)
+                else:
+                  boys.move(minX, minY)
+                  boys.mine(minGirl)
+
+          if boys.job.title=="corvette":
+            if corvetteIndex % 2 == 0:
+              boys.dash(1600, 675)
+            else:
+              boys.dash(1600, 225)
+
+            for allUnits in self.game.units:
+              if allUnits.owner != self.player and not bodys.acted:
+                boys.attack(allUnits)
+
+        if self.money > self.game.jobs[0].unit_cost and corvetteCount <= 2:
+          self.body.spawn(self.initialPosX, self.initialPosY, "corvette")
+          self.corvetteCount += 1
+        elif self.money > self.game.jobs[4].unit_cost and corvetteCount >= 2:
+          self.body.spawn(self.initialPosX, self.initialPosY, "miner")
+          self.minerCount += 1
 
 
         self.hasDashed = True
