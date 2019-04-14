@@ -158,17 +158,16 @@ class AI(BaseAI):
           if boys.job.title=="corvette":
             yMove=0
             xMove=0
-            boys.move(boys.x, boys.y+64)
-            """
+            #boys.move(boys.x, boys.y-64)
             if corvetteIndex % 2 == 0:
               if 1600-boys.x > 0: #on left
                 if boys.y < 625:
-                  yMove=32
+                  yMove=-32
                 if boys.x < 1600:
                   xMove=32
               else: #on right
                 if boys.y < 625:
-                  yMove=32
+                  yMove=-32
                 if boys.x > 1600:
                   xMove=-32
               boys.move(boys.x+xMove, boys.y+yMove)
@@ -177,16 +176,15 @@ class AI(BaseAI):
             else:
               if 1600-boys.x > 0: #on left
                 if boys.y > 225:
-                  yMove=-32
+                  yMove=32
                 if boys.x < 1600:
                   xMove=32
               else: #on right
                 if boys.y > 225:
-                  yMove=-32
+                  yMove=32
                 if boys.x > 1600:
                   xMove=-32
               boys.move(boys.x+xMove, boys.y+yMove)
-            """
 
             for allUnits in self.game.units:
               if allUnits.owner != self.player and not boys.acted:
