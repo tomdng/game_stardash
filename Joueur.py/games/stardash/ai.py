@@ -133,7 +133,7 @@ class AI(BaseAI):
                       minFineDistance = girlsFineDistance
                       minFineGirl = girls
 
-                  elif girls.body_type == "asteroid" and girls.owner == None and girls.amount > 2:
+                  elif girls.body_type == "asteroid" and girls.owner == None and girls.ammount > 2:
                     girlsPosX = girls.x
                     girlsPosY = girls.y
                     girlsDistance = ((girlsPosX-boysPosX)**2+(girlsPosY-boysPosY)**2)**(1/2)
