@@ -4,7 +4,13 @@ from joueur.base_ai import BaseAI
 
 # <<-- Creer-Merge: imports -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
 # you can add additional import(s) here
+from games.stardash.body import Body
+from games.stardash.game import Game
+from games.stardash.game_object import GameObject
+from games.stardash.job import Job
 from games.stardash.player import Player
+from games.stardash.projectile import Projectile
+from games.stardash.unit import Unit
 # <<-- /Creer-Merge: imports -->>
 
 class AI(BaseAI):
