@@ -113,7 +113,7 @@ class AI(BaseAI):
                     minDistance = girlsDistance
                     minGirl = girls
 
-              if !self.hasDashed:
+              if not self.hasDashed:
                 boys.dash(minX, minY)
               else:
                 boys.move(minX, minY)
