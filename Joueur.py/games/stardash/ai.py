@@ -123,17 +123,17 @@ class AI(BaseAI):
                 minFineDistance=10000
                 minFineGirl = None
                 for girls in self.game.bodies:
-                  if girls.body_type == "asteroid" and girls.owner == None and girls.material_type == "legendarium" and girls.amount > 2:
+                  if girls.body_type == "asteroid" and girls.owner == None and girls.material_type == "legendarium":
                     girlsFinePosX = girls.x
                     girlsFinePosY = girls.y
                     girlsFineDistance = ((girlsFinePosX-boysPosX)**2+(girlsFinePosY-boysPosY)**2)**(1/2)
                     if girlsFineDistance < minFineDistance:
-                      minFineX=girlsFinePosX
+                      minFineX=girlsFinPosX
                       minFineY=girlsFinePosY
                       minFineDistance = girlsFineDistance
                       minFineGirl = girls
 
-                  elif girls.body_type == "asteroid" and girls.owner == None and girls.ammount > 2:
+                  elif girls.body_type == "asteroid" and girls.owner == None:
                     girlsPosX = girls.x
                     girlsPosY = girls.y
                     girlsDistance = ((girlsPosX-boysPosX)**2+(girlsPosY-boysPosY)**2)**(1/2)
