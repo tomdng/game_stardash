@@ -147,6 +147,9 @@ class AI(BaseAI):
                     boys.dash(minX, minY)
                 else:
                   if minFineDistance < minDistance*2:
+                    boys.move(minFineX, minFineY)
+                    boys.mine(minFineGirl)
+                  else:
                     boys.move(minX, minY)
                     boys.mine(minGirl)
               else:
