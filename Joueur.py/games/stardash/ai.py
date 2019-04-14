@@ -60,6 +60,8 @@ class AI(BaseAI):
 
 
         self.hasDashed = False
+        self.corvetteOneHasDashed = False
+        self.corvetteTwoHasDashed = False
 
 
         self.initialPosX = self.player.units[0].x
@@ -110,7 +112,7 @@ class AI(BaseAI):
               boys.dash(self.initialPosX, self.initialPosY)
 
             else:
-              if minerIndex < 3:
+              if minerIndex <= 3:
                 minX=10000
                 minY=10000
                 minDistance=10000
@@ -154,10 +156,12 @@ class AI(BaseAI):
                   boys.mine(minGirl)
 
           if boys.job.title=="corvette":
-            if corvetteIndex % 2 == 0:
+            if corvetteIndex % 2 == 0 and not self.corvetteOneHasDashed:
               boys.dash(1600, 675)
-            else:
+              self.corvetteOneHasDashed = True
+            elif not self.corvetteTwoHasDashed:
               boys.dash(1600, 225)
+              self.corvetteTwoHasDashed = True
 
             for allUnits in self.game.units:
               if allUnits.owner != self.player and not boys.acted:
