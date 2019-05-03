@@ -1,0 +1,9 @@
+<section id="gamelogs" class="info-block">
+	<h2>Game Archives</h2>
+	{{> gamelogs}}
+
+	<section class="pagination">
+		<a class="newer" {{#if newerUri}}href="{{newerUri}}"{{/if}}>&laquo; Newer</a>
+		<a class="older" {{#if olderUri}}href="{{olderUri}}"{{/if}}>Older &raquo;</a>
+	</section>
+</section>
