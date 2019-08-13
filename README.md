@@ -1,6 +1,6 @@
 # game_stardash
 
-This is the repo for Tommy Dong and Thomas Gleiforst's code for the 2019 SIG-Comp AI competition at the Missouri Univerisity of Science and Technology.
+This is the repo for Tommy Dong and Thomas Gleiforst's code for the 2019 SIG-Comp MegaMiner AI competition at the Missouri Univerisity of Science and Technology.
 
 This year's game is called Stardash, and relies on building various ships from miners to attack ships with the ultimate goal of mining a certain rare ore present in the game.
 
