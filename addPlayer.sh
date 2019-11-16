@@ -1,6 +1,8 @@
 #!/bin/bash
+# Allows relative pathing
+parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 
-cd ~/Coding/python/stardash/game_stardash/Cadre/Joueur.py
+cd ./Cadre/Joueur.py
 make
 ./run Stardash
-cd ~/Coding/python/stardash/game_stardash
+cd ./
